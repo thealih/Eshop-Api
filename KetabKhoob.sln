@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shop", "Shop", "{65887634-94AB-4CF5-9539-C13442B6FDBA}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Query", "Shop\Shop.Query\Shop.Query.csproj", "{4B4B587C-1F3A-4D75-8D2E-9CF4A0C35FFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Presentation.Facade", "Shop\Shop.Presentation.Facade\Shop.Presentation.Facade.csproj", "{946D6FEE-0C6A-4A58-A3E4-9C4EA991618B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{2B355941-14D8-4012-A79C-75E4FB931230}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Domain", "Common\Common.Domain\Common.Domain.csproj", "{9E5AAD26-64FF-417F-892C-FD5C622D6C13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +45,10 @@ Global
 		{946D6FEE-0C6A-4A58-A3E4-9C4EA991618B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{946D6FEE-0C6A-4A58-A3E4-9C4EA991618B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{946D6FEE-0C6A-4A58-A3E4-9C4EA991618B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E5AAD26-64FF-417F-892C-FD5C622D6C13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E5AAD26-64FF-417F-892C-FD5C622D6C13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E5AAD26-64FF-417F-892C-FD5C622D6C13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E5AAD26-64FF-417F-892C-FD5C622D6C13}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +59,6 @@ Global
 		{D1858BBB-FADB-4E23-91B1-18BB92C4766B} = {65887634-94AB-4CF5-9539-C13442B6FDBA}
 		{4B4B587C-1F3A-4D75-8D2E-9CF4A0C35FFC} = {65887634-94AB-4CF5-9539-C13442B6FDBA}
 		{946D6FEE-0C6A-4A58-A3E4-9C4EA991618B} = {65887634-94AB-4CF5-9539-C13442B6FDBA}
+		{9E5AAD26-64FF-417F-892C-FD5C622D6C13} = {2B355941-14D8-4012-A79C-75E4FB931230}
 	EndGlobalSection
 EndGlobal
