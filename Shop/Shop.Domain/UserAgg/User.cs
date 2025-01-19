@@ -73,10 +73,11 @@ public class User : AggregateRoot
         Wallets.Add(wallet);
     }
 
-    public void ChargeWallet(List<UserRole> role)
+    public void SetRoles(List<UserRole> roles)
     {
+        roles.ForEach(f => f.UserId = Id);
         Roles.Clear();
-        Roles.AddRange(role);
+        Roles.AddRange(roles);
     }
 
     public void Guard(string phoneNumber, string email, IDomainUserService domainService)
