@@ -1,8 +1,9 @@
-﻿using Common.Domain.Exceptions;
+﻿using Common.Domain;
+using Common.Domain.Exceptions;
 
 namespace Shop.Domain.SellerAgg;
 
-public class SellerInventory
+public class SellerInventory:BaseEntity
 {
     public SellerInventory(long productId, int count, int price)
     {

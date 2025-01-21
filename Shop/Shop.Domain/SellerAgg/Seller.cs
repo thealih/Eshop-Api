@@ -62,7 +62,7 @@ namespace Shop.Domain.SellerAgg
         }
         public void DeleteInventory(long inventoryId)
         {
-            var currentInventory = Inventories.FirstOrDefault(f => f.Id == newInventory.Id);
+            var currentInventory = Inventories.FirstOrDefault(f => f.Id == inventoryId);
             if (currentInventory == null)
             {
                 throw new NullOrEmptyDomainDataException("محصول یافت نشد.");
