@@ -1,6 +1,7 @@
 ﻿using Common.Domain;
 using Common.Domain.Exceptions;
 using Shop.Domain.OrderAgg.ValueObjects;
+using Shop.Domain.SellerAgg.Repository;
 
 namespace Shop.Domain.OrderAgg;
 
@@ -46,17 +47,29 @@ public class Order : AggregateRoot
 
     public void AddItem(OrderItem item)
     {
+        ChangeOrderGuard();
+
+        var oldItem = Items.FirstOrDefault(f => f.InventoryId == item.InventoryId);
+        if (oldItem != null)
+        {
+            oldItem.ChangeCount(item.Count + oldItem.Count); 
+            return;
+        }
         Items.Add(item);
     }
 
     public void RemoveItem(long itemId)
     {
+        ChangeOrderGuard();
+
         var currentItems = Items.FirstOrDefault(f => f.Id == itemId);
         if (currentItems != null) Items.Remove(currentItems);
     }
 
     public void ChangeCountItem(long itemId, int newCount)
     {
+        ChangeOrderGuard();
+
         var currentItems = Items.FirstOrDefault(f => f.Id == itemId);
         if (currentItems == null) throw new NullOrEmptyDomainDataException();
         currentItems.ChangeCount(newCount);
@@ -70,6 +83,14 @@ public class Order : AggregateRoot
 
     public void Checkout(OrderAddress orderAddress)
     {
+        ChangeOrderGuard();
+
         Address = orderAddress;
+    }
+
+    public void ChangeOrderGuard()
+    {
+        if (Status != OrderStatus.Pending)
+            throw new InvalidDomainDataException("امکان ثبت محصول در این سفارش وجود ندارد.");
     }
 }
