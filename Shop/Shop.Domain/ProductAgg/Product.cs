@@ -17,7 +17,9 @@ namespace Shop.Domain.ProductAgg
         private Product(){}
         public Product(string title, string imageName, string description, long categoryId, long subCategoryId, long secondarySubCategoryId, string slug, SeoData seoData , IProductDomainService domainService)
         {
-            Guard(title, slug, imageName, description, domainService);
+            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
+
+            Guard(title, slug, description, domainService);
 
             Title = title;
             ImageName = imageName;
@@ -41,11 +43,10 @@ namespace Shop.Domain.ProductAgg
         public List<ProductSpecification> Specifications { get; private set; }
 
 
-        public void Edit(string title, string imageName, string description, long categoryId, long subCategoryId, long secondarySubCategoryId, string slug, SeoData seoData , IProductDomainService domainService)
+        public void Edit(string title, string description, long categoryId, long subCategoryId, long secondarySubCategoryId, string slug, SeoData seoData , IProductDomainService domainService)
         {
-            Guard(title, slug, imageName,description, domainService);
+            Guard(title, slug,description, domainService);
             Title = title;
-            ImageName = imageName;
             Description = description;
             CategoryId = categoryId;
             SubCategoryId = subCategoryId;
@@ -54,6 +55,11 @@ namespace Shop.Domain.ProductAgg
             SeoData = seoData;
         }
 
+        public void SetProductImage(string imageName)
+        {
+            NullOrEmptyDomainDataException.CheckString(imageName , nameof(imageName));
+            ImageName = imageName;
+        }
         public void AddImage(ProductImage image)
         {
             image.ProductId = Id;
@@ -77,10 +83,9 @@ namespace Shop.Domain.ProductAgg
             Specifications = specifications;
         }
 
-        public void Guard(string title,string slug, string imageName, string description , IProductDomainService domainService)
+        public void Guard(string title,string slug, string description , IProductDomainService domainService)
         {
             NullOrEmptyDomainDataException.CheckString(title,nameof(title));
-            NullOrEmptyDomainDataException.CheckString(imageName,nameof(imageName));
             NullOrEmptyDomainDataException.CheckString(description,nameof(description));
             NullOrEmptyDomainDataException.CheckString(slug,nameof(slug));
 
