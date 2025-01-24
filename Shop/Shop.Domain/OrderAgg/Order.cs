@@ -66,6 +66,24 @@ public class Order : AggregateRoot
         if (currentItems != null) Items.Remove(currentItems);
     }
 
+    public void IncreaseItemCount(long itemId,int count)
+    {
+        ChangeOrderGuard();
+
+        var currentItems = Items.FirstOrDefault(f => f.Id == itemId);
+        if (currentItems == null) 
+            throw new NullOrEmptyDomainDataException();
+        currentItems.IncreaseCount(count);
+    }
+    public void DecreaseItemCount(long itemId,int count)
+    {
+        ChangeOrderGuard();
+
+        var currentItems = Items.FirstOrDefault(f => f.Id == itemId);
+        if (currentItems == null) 
+            throw new NullOrEmptyDomainDataException();
+        currentItems.DecreaseCount(count);
+    }
     public void ChangeCountItem(long itemId, int newCount)
     {
         ChangeOrderGuard();
@@ -91,6 +109,6 @@ public class Order : AggregateRoot
     public void ChangeOrderGuard()
     {
         if (Status != OrderStatus.Pending)
-            throw new InvalidDomainDataException("امکان ثبت محصول در این سفارش وجود ندارد.");
+            throw new InvalidDomainDataException("امکان ویرایش این سفارش وجود ندارد.");
     }
 }
