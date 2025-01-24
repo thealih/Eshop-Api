@@ -9,7 +9,6 @@
   <ItemGroup>
     <Folder Include="Roles\Edit\" />
     <Folder Include="Seller\DeleteInventory\" />
-    <Folder Include="Seller\Create\" />
     <Folder Include="Seller\Edit\" />
     <Folder Include="Seller\ChangeStatus\" />
     <Folder Include="Seller\AddInventory\" />
