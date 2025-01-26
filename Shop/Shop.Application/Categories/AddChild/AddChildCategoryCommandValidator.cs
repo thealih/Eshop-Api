@@ -1,6 +1,7 @@
 ﻿using Common.Application.Validation;
 using FluentValidation;
-using Shop.Application.Categories.AddChild;
+
+namespace Shop.Application.Categories.AddChild;
 
 public class AddChildCategoryCommandValidator:AbstractValidator<AddChildCategoryCommand>
 {

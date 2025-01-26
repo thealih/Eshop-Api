@@ -8,15 +8,7 @@
 
   <ItemGroup>
     <Folder Include="Roles\Edit\" />
-    <Folder Include="Seller\DeleteInventory\" />
     <Folder Include="Seller\Edit\" />
-    <Folder Include="Seller\ChangeStatus\" />
-    <Folder Include="Seller\AddInventory\" />
-    <Folder Include="Seller\EditInventory\" />
-    <Folder Include="SiteEntities\Banner\Create\" />
-    <Folder Include="SiteEntities\Banner\Edit\" />
-    <Folder Include="SiteEntities\Slider\Create\" />
-    <Folder Include="SiteEntities\Slider\Edit\" />
     <Folder Include="Users\Create\" />
     <Folder Include="Users\Edit\" />
     <Folder Include="Users\AddAddress\" />

@@ -20,7 +20,7 @@ internal class EditSellerCommandHandler:IBaseCommandHandler<EditSellerCommand>
         var seller =await _repository.GetTracking(request.Id);
         if (seller == null)
             return OperationResult.NotFound();
-        seller.Edit(request.ShopName , request.NationalCode , _domainService);
+        seller.Edit(request.ShopName , request.NationalCode,request.Status , _domainService);
         await _repository.Save();
         return OperationResult.Success();
     }
