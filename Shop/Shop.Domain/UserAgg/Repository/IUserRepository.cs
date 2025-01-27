@@ -5,9 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Common.Domain.Repository;
 
-namespace Shop.Domain.UserAgg.Repository
-{
-    public interface IUserRepository : IBaseRepository<User>
-    {
-    }
-}
+namespace Shop.Domain.UserAgg.Repository;
+
+public interface IUserRepository : IBaseRepository<User>;

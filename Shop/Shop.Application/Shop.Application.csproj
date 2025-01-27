@@ -9,11 +9,7 @@
   <ItemGroup>
     <Folder Include="Roles\Edit\" />
     <Folder Include="Seller\Edit\" />
-    <Folder Include="Users\Create\" />
-    <Folder Include="Users\Edit\" />
-    <Folder Include="Users\AddAddress\" />
     <Folder Include="Users\DeleteAddress\" />
-    <Folder Include="Users\EditAddress\" />
     <Folder Include="Users\ChargeWallet\" />
     <Folder Include="Users\Register\" />
   </ItemGroup>
