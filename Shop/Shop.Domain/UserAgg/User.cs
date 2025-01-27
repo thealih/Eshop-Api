@@ -42,9 +42,9 @@ public class User : AggregateRoot
         Email = email;
     }
 
-    public static User RegisterUser(string email, string phoneNumber, string password, IUserDomainService userDomainService)
+    public static User RegisterUser( string phoneNumber, string password, IUserDomainService userDomainService)
     {
-        return new User("", "", phoneNumber, email, password, Gender.Unspecified, userDomainService);
+        return new User("", "", phoneNumber ,null , password, Gender.Unspecified, userDomainService);
     }
 
     public void SetAvatar(string imageName)
