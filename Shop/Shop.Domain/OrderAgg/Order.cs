@@ -23,8 +23,8 @@ public class Order : AggregateRoot
     public OrderDiscount? Discount { get; private set; }
     public OrderAddress? Address { get; private set; }
     public ShippingMethod? ShippingMethod { get; private set; }
+    public List<OrderItem> Items { get; private set; }
     public DateTime? LastUpdate { get; set; }
-    public List<OrderItem> Items { get; }
 
     public int TotalPrice
     {
