@@ -1,7 +1,7 @@
-﻿using Shop.Domain.OrderAgg.ValueObjects;
-using Shop.Domain.SiteEntities;
-using Shop.Domain.SiteEntities.Repository;
+﻿using Shop.Domain.SiteEntities;
+using Shop.Domain.SiteEntities.Repositories;
 using Shop.Infrastructure._Utilities;
+using Shop.Domain.SiteEntities;
 
 namespace Shop.Infrastructure.Persistent.Ef.SiteEntities.Repositories;
 

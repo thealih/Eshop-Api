@@ -5,13 +5,14 @@ using Services.Common.Infrastructure.MediatR;
 using Shop.Domain.CategoryAgg;
 using Shop.Domain.CommentAgg;
 using Shop.Domain.OrderAgg;
-using Shop.Domain.OrderAgg.ValueObjects;
 using Shop.Domain.ProductAgg;
 using Shop.Domain.RoleAgg;
 using Shop.Domain.SellerAgg;
 using Shop.Domain.SiteEntities;
 using Shop.Domain.UserAgg;
 using Shop.Infrastructure._Utilities.MediatR;
+using ICustomPublisher = Shop.Infrastructure._Utilities.MediatR.ICustomPublisher;
+using PublishStrategy = Shop.Infrastructure._Utilities.MediatR.PublishStrategy;
 
 namespace Shop.Infrastructure.Persistent.Ef;
 

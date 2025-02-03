@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Services.Common.Infrastructure.MediatR;
 using Shop.Domain.CategoryAgg;
 using Shop.Domain.CommentAgg;
 using Shop.Domain.OrderAgg.Repository;
 using Shop.Domain.ProductAgg.Repository;
 using Shop.Domain.RoleAgg.Repository;
 using Shop.Domain.SellerAgg.Repository;
+using Shop.Domain.SiteEntities.Repositories;
 using Shop.Domain.SiteEntities.Repository;
 using Shop.Domain.SiteEntities.Repository;
 using Shop.Domain.UserAgg.Repository;

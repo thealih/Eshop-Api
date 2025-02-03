@@ -17,5 +17,3 @@ public class EditSliderCommand:IBaseCommand
     public IFormFile? ImageFile { get; private set; }
     public string Title { get; private set; }
 }
-
-}

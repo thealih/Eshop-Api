@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -20,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="_Utilities\" />
     <Folder Include="Persistent.Ef\CategoryAgg\" />
     <Folder Include="Persistent.Ef\CommentAgg\" />
   </ItemGroup>
