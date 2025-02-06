@@ -2,9 +2,10 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Shop.Application._Utilities;
+using Shop.Application.Categories;
 using Shop.Application.Products;
 using Shop.Application.Roles.Create;
-using Shop.Application.Seller;
+using Shop.Application.Sellers;
 using Shop.Application.Users;
 using Shop.Domain.CategoryAgg.Services;
 using Shop.Domain.ProductAgg.Services;
@@ -17,9 +18,9 @@ namespace Shop.Config
 {
     public static class ShopBootstrapper
     {
-        public static void RegisterShopDependency(this IServiceCollection services , string connectionString)
+        public static void RegisterShopDependency(this IServiceCollection services,string connectionString)
         {
-            InfrastructureBootstrapper.Init(services, connectionString);
+            InfrastructureBootstrapper.Init(services,connectionString);
 
             services.AddMediatR(typeof(Directories).Assembly);
 
@@ -27,7 +28,7 @@ namespace Shop.Config
 
             services.AddTransient<IProductDomainService, ProductDomainService>();
             services.AddTransient<IUserDomainService, UserDomainService>();
-            services.AddTransient<ICategoryDomainService, ICategoryDomainService>();
+            services.AddTransient<ICategoryDomainService, CategoryDomainService>();
             services.AddTransient<ISellerDomainService, SellerDomainService>();
 
 

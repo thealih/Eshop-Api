@@ -2,25 +2,28 @@
 using Shop.Domain.CategoryAgg;
 using Shop.Domain.CategoryAgg.Services;
 
-namespace Shop.Application.Categories.Edit;
-
-public class EditCategoryCommandHandler : IBaseCommandHandler<EditCategoryCommand>
+namespace Shop.Application.Categories.Edit
 {
-    private readonly ICategoryDomainService _domainService;
-    private readonly ICategoryRepository _repository;
-
-    public EditCategoryCommandHandler(ICategoryRepository repository, ICategoryDomainService domainService)
+    public class EditCategoryCommandHandler : IBaseCommandHandler<EditCategoryCommand>
     {
-        _repository = repository;
-        _domainService = domainService;
-    }
+        private readonly ICategoryRepository _repository;
+        private readonly ICategoryDomainService _domainServicer;
 
-    public async Task<OperationResult> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
-    {
-        var category = await _repository.GetTracking(request.Id);
-        if (category == null) return OperationResult.NotFound();
-        category.Edit(request.Title, request.Slug, request.SeoData, _domainService);
-        await _repository.Save();
-        return OperationResult.Success();
+        public EditCategoryCommandHandler(ICategoryRepository repository, ICategoryDomainService domainServicer)
+        {
+            _repository = repository;
+            _domainServicer = domainServicer;
+        }
+
+        public async Task<OperationResult> Handle(EditCategoryCommand request, CancellationToken cancellationToken)
+        {
+            var category = await _repository.GetTracking(request.Id);
+            if (category == null)
+                return OperationResult.NotFound();
+
+            category.Edit(request.Title, request.Slug, request.SeoData, _domainServicer);
+            await _repository.Save();
+            return OperationResult.Success();
+        }
     }
 }

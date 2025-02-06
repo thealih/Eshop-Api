@@ -1,4 +1,5 @@
 ﻿using Common.Application.Validation;
+using Common.Application.Validation.FluentValidations;
 using FluentValidation;
 
 namespace Shop.Application.Users.AddAddress;
@@ -20,18 +21,13 @@ public class AddUserAddressCommandValidator:AbstractValidator<AddUserAddressComm
             .NotEmpty().WithMessage(ValidationMessages.required("نام خانوادگی"));
 
         RuleFor(f => f.NationalCode)
-            .NotEmpty().WithMessage(ValidationMessages.required("کدملی"));
-
-        RuleFor(f => f.PhoneNumber)
-            .NotEmpty().WithMessage(ValidationMessages.required("شماره تلفن"));
+            .NotEmpty().WithMessage(ValidationMessages.required("کدملی"))
+            .ValidNationalId();
 
         RuleFor(f => f.PostalAddress)
             .NotEmpty().WithMessage(ValidationMessages.required("آدرس پستی"));
 
         RuleFor(f => f.PostalCode)
-            .NotEmpty().WithMessage(ValidationMessages.required("کد پستی"))
-            .MinimumLength(10)
-            .MaximumLength(10);
-       
+            .NotEmpty().WithMessage(ValidationMessages.required("کد پستی"));
     }
 }

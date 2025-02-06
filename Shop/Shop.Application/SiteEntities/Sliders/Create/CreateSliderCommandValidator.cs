@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Shop.Application.SiteEntities.Sliders.Create;
 
-public class CreateSliderCommandValidator :AbstractValidator<CreateSliderCommand>
+public class CreateSliderCommandValidator : AbstractValidator<CreateSliderCommand>
 {
     public CreateSliderCommandValidator()
     {

@@ -8,9 +8,7 @@ internal static class CategoryMapper
     public static CategoryDto Map(this Category? category)
     {
         if (category == null)
-        {
             return null;
-        }
 
         return new CategoryDto()
         {
@@ -19,10 +17,9 @@ internal static class CategoryMapper
             Id = category.Id,
             SeoData = category.SeoData,
             CreationDate = category.CreationDate,
-            Children = category.Children.MapChildren()
+            Childs = category.Childs.MapChildren()
         };
     }
-
     public static List<CategoryDto> Map(this List<Category> categories)
     {
         var model = new List<CategoryDto>();
@@ -36,7 +33,7 @@ internal static class CategoryMapper
                 Id = category.Id,
                 SeoData = category.SeoData,
                 CreationDate = category.CreationDate,
-                Children = category.Children.MapChildren()
+                Childs = category.Childs.MapChildren()
             });
         });
 
@@ -46,6 +43,7 @@ internal static class CategoryMapper
     public static List<ChildCategoryDto> MapChildren(this List<Category> children)
     {
         var model = new List<ChildCategoryDto>();
+
         children.ForEach(c =>
         {
             model.Add(new ChildCategoryDto()
@@ -56,7 +54,7 @@ internal static class CategoryMapper
                 SeoData = c.SeoData,
                 CreationDate = c.CreationDate,
                 ParentId = (long)c.ParentId,
-                Children = c.Children.MapSecondaryChild()
+                Childs = c.Childs.MapSecondaryChild()
             });
         });
         return model;

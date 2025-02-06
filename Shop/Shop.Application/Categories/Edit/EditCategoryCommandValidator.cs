@@ -1,16 +1,17 @@
 ﻿using Common.Application.Validation;
 using FluentValidation;
 
-namespace Shop.Application.Categories.Edit;
-
-public class EditCategoryCommandValidator:AbstractValidator<EditCategoryCommand>
+namespace Shop.Application.Categories.Edit
 {
-    public EditCategoryCommandValidator()
+    public class EditCategoryCommandValidator : AbstractValidator<EditCategoryCommand>
     {
-        RuleFor(r => r.Title)
-            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
+        public EditCategoryCommandValidator()
+        {
+            RuleFor(r => r.Title)
+                .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
 
-        RuleFor(r => r.Slug)
-            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
+            RuleFor(r => r.Slug)
+              .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
+        }
     }
 }

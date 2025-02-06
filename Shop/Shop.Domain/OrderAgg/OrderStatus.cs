@@ -1,9 +1,10 @@
-﻿namespace Shop.Domain.OrderAgg;
-
-public enum OrderStatus
+﻿namespace Shop.Domain.OrderAgg
 {
-    Pending,
-    Finally,
-    Shipping,
-    Rejected
+    public enum OrderStatus
+    {
+        Pending,
+        Finally,
+        Shipping,
+        Rejected
+    }
 }

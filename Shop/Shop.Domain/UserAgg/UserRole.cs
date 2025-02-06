@@ -1,14 +1,15 @@
 ﻿using Common.Domain;
 
-namespace Shop.Domain.UserAgg;
-
-public class UserRole : BaseEntity
+namespace Shop.Domain.UserAgg
 {
-    public UserRole(long roleId)
+    public class UserRole : BaseEntity
     {
-        RoleId = roleId;
-    }
+        public UserRole(long roleId)
+        {
+            RoleId = roleId;
+        }
 
-    public long UserId { get;internal set; }
-    public long RoleId { get;private set; }
+        public long UserId { get; internal set; }
+        public long RoleId { get; private set; }
+    }
 }

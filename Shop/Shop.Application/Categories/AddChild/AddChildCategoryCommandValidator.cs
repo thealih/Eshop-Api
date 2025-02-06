@@ -1,17 +1,17 @@
 ﻿using Common.Application.Validation;
 using FluentValidation;
 
-namespace Shop.Application.Categories.AddChild;
-
-public class AddChildCategoryCommandValidator:AbstractValidator<AddChildCategoryCommand>
+namespace Shop.Application.Categories.AddChild
 {
-    public AddChildCategoryCommandValidator()
+    public class AddChildCategoryCommandValidator : AbstractValidator<AddChildCategoryCommand>
     {
-        RuleFor(r => r.Title)
-            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
+        public AddChildCategoryCommandValidator()
+        {
+            RuleFor(r => r.Title)
+              .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
 
-        RuleFor(r => r.Slug)
-            .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
+            RuleFor(r => r.Slug)
+              .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
+        }
     }
-        
 }

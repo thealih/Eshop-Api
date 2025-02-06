@@ -1,6 +1,6 @@
 ﻿using Common.Application;
-using Shop.Domain.RoleAgg.Enums;
+using Shop.Domain.RoleAgg;
 
 namespace Shop.Application.Roles.Edit;
 
-public record EditRoleCommand(long Id,string Title, List<Permission> Permissions) : IBaseCommand;
+public record EditRoleCommand(long Id, string Title, List<Permission> Permissions) : IBaseCommand;

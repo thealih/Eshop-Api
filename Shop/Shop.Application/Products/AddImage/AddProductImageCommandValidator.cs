@@ -2,16 +2,18 @@
 using Common.Application.Validation.FluentValidations;
 using FluentValidation;
 
-namespace Shop.Application.Products.AddImage;
-
-public class AddProductImageCommandValidator:AbstractValidator<AddProductImageCommand>
+namespace Shop.Application.Products.AddImage
 {
-    public AddProductImageCommandValidator()
+    public class AddProductImageCommandValidator : AbstractValidator<AddProductImageCommand>
     {
-        RuleFor(b => b.ImageFile)
-            .NotNull().WithMessage(ValidationMessages.required("عکس"))
-            .JustImageFile();
-        RuleFor(b => b.Sequence)
-            .GreaterThanOrEqualTo(0);
+        public AddProductImageCommandValidator()
+        {
+            RuleFor(b => b.ImageFile)
+                .NotNull().WithMessage(ValidationMessages.required("عکس"))
+                .JustImageFile();
+
+            RuleFor(b => b.Sequence)
+                .GreaterThanOrEqualTo(0);
+        }
     }
 }

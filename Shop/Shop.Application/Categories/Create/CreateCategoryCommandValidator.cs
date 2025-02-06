@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Shop.Application.Categories.Create
 {
-    public class CreateCategoryCommandValidator:AbstractValidator<CreateCategoryCommand>
+    internal partial class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
     {
         public CreateCategoryCommandValidator()
         {
@@ -16,7 +16,7 @@ namespace Shop.Application.Categories.Create
                 .NotNull().NotEmpty().WithMessage(ValidationMessages.required("عنوان"));
 
             RuleFor(r => r.Slug)
-                .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
+              .NotNull().NotEmpty().WithMessage(ValidationMessages.required("Slug"));
         }
     }
 }

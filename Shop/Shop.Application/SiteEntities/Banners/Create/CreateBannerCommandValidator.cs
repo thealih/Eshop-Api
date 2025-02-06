@@ -1,11 +1,10 @@
-﻿using System.Data;
-using Common.Application.Validation;
+﻿using Common.Application.Validation;
 using Common.Application.Validation.FluentValidations;
 using FluentValidation;
 
 namespace Shop.Application.SiteEntities.Banners.Create;
 
-public class CreateBannerCommandValidator:AbstractValidator<CreateBannerCommand>
+public class CreateBannerCommandValidator : AbstractValidator<CreateBannerCommand>
 {
     public CreateBannerCommandValidator()
     {

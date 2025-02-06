@@ -32,7 +32,7 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : 
     {
         Context.Set<TEntity>().Add(entity);
     }
-
+  
     public async Task AddRange(ICollection<TEntity> entities)
     {
         await Context.Set<TEntity>().AddRangeAsync(entities);

@@ -1,14 +1,13 @@
-﻿using System;
+﻿using Common.Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Application;
-using FluentValidation.Validators;
 
 namespace Shop.Application.Orders.Checkout
 {
-    public class CheckoutOrderCommand:IBaseCommand
+    public class CheckoutOrderCommand : IBaseCommand
     {
         public CheckoutOrderCommand(long userId, string shire, string city, string postalCode, string postalAddress, string phoneNumber, string name, string family, string nationalCode)
         {

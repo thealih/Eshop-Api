@@ -12,15 +12,15 @@ public class AddUserAddressCommandHandler:IBaseCommandHandler<AddUserAddressComm
     {
         _repository = repository;
     }
+
     public async Task<OperationResult> Handle(AddUserAddressCommand request, CancellationToken cancellationToken)
     {
-        var user = await _repository.GetTracking(request.UserId);
-        if (user == null)
+        var user =await _repository.GetTracking(request.UserId);
+        if(user==null)
             return OperationResult.NotFound();
 
         var address = new UserAddress(request.Shire, request.City, request.PostalCode, request.PostalAddress,
             request.PhoneNumber, request.Name, request.Family, request.NationalCode);
-
         user.AddAddress(address);
         await _repository.Save();
         return OperationResult.Success();

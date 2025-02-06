@@ -5,7 +5,7 @@ using Shop.Query.Categories.DTOs;
 
 namespace Shop.Query.Categories.GetByParentId;
 
-internal class GetCategoryByParentIdQueryHandler : IQueryHandler<GetCategoryByParentIdQuery , List<ChildCategoryDto>>
+internal class GetCategoryByParentIdQueryHandler : IQueryHandler<GetCategoryByParentIdQuery, List<ChildCategoryDto>>
 {
     private readonly ShopContext _context;
 
@@ -16,7 +16,8 @@ internal class GetCategoryByParentIdQueryHandler : IQueryHandler<GetCategoryByPa
 
     public async Task<List<ChildCategoryDto>> Handle(GetCategoryByParentIdQuery request, CancellationToken cancellationToken)
     {
-        var result = await _context.Categories.Where(r=>r.ParentId == request.ParentId).ToListAsync(cancellationToken);
+        var result = await _context.Categories
+            .Where(r => r.ParentId == request.ParentId).ToListAsync(cancellationToken);
 
         return result.MapChildren();
     }

@@ -4,7 +4,7 @@ using FluentValidation;
 
 namespace Shop.Application.SiteEntities.Banners.Edit;
 
-public class EditBannerCommandValidator:AbstractValidator<EditBannerCommand>
+public class EditBannerCommandValidator : AbstractValidator<EditBannerCommand>
 {
     public EditBannerCommandValidator()
     {

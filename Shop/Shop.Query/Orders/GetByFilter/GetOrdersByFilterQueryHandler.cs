@@ -5,14 +5,15 @@ using Shop.Query.Orders.DTOs;
 
 namespace Shop.Query.Orders.GetByFilter;
 
-internal class GetOrdersByFilterQueryHandler:IQueryHandler<GetOrdersByFilterQuery , OrderFilterResult>
+internal class GetOrdersByFilterQueryHandler : IQueryHandler<GetOrdersByFilterQuery, OrderFilterResult>
 {
-    private ShopContext _context;
+    private readonly ShopContext _context;
 
     public GetOrdersByFilterQueryHandler(ShopContext context)
     {
         _context = context;
     }
+
     public async Task<OrderFilterResult> Handle(GetOrdersByFilterQuery request, CancellationToken cancellationToken)
     {
         var @params = request.FilterParams;
@@ -30,16 +31,16 @@ internal class GetOrdersByFilterQueryHandler:IQueryHandler<GetOrdersByFilterQuer
         if (@params.EndDate != null)
             result = result.Where(r => r.CreationDate.Date <= @params.EndDate.Value.Date);
 
-        var skip = (@params.PageId - 1) * @params.Take;
 
+        var skip = (@params.PageId - 1) * @params.Take;
         var model = new OrderFilterResult()
         {
             Data = await result.Skip(skip).Take(@params.Take)
-                .Select(order => order.MapFilterData(_context))
+                .Select(order =>order.MapFilterData(_context))
                 .ToListAsync(cancellationToken),
             FilterParams = @params
         };
-        model.GeneratePaging(result , @params.Take , @params.PageId);
+        model.GeneratePaging(result, @params.Take, @params.PageId);
         return model;
     }
 }

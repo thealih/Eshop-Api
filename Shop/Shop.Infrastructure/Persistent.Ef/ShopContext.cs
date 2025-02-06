@@ -1,7 +1,4 @@
-﻿using Common.Domain;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Services.Common.Infrastructure.MediatR;
+﻿using Microsoft.EntityFrameworkCore;
 using Shop.Domain.CategoryAgg;
 using Shop.Domain.CommentAgg;
 using Shop.Domain.OrderAgg;
@@ -10,18 +7,14 @@ using Shop.Domain.RoleAgg;
 using Shop.Domain.SellerAgg;
 using Shop.Domain.SiteEntities;
 using Shop.Domain.UserAgg;
-using Shop.Infrastructure._Utilities.MediatR;
-using ICustomPublisher = Shop.Infrastructure._Utilities.MediatR.ICustomPublisher;
-using PublishStrategy = Shop.Infrastructure._Utilities.MediatR.PublishStrategy;
 
 namespace Shop.Infrastructure.Persistent.Ef;
 
 public class ShopContext : DbContext
 {
-    private readonly ICustomPublisher _publisher;
-    public ShopContext(DbContextOptions<ShopContext> options, ICustomPublisher publisher) : base(options)
+    public ShopContext(DbContextOptions<ShopContext> options) : base(options)
     {
-        _publisher = publisher;
+
     }
 
     public DbSet<Category> Categories { get; set; }
@@ -34,31 +27,7 @@ public class ShopContext : DbContext
     public DbSet<Slider> Sliders { get; set; }
     public DbSet<Banner> Banners { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<ShippingMethod> ShippingMethods { get; set; }
 
-    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-    {
-        var modifiedEntities = GetModifiedEntities();
-        await PublishEvents(modifiedEntities);
-        return await base.SaveChangesAsync(cancellationToken);
-    }
-    private List<AggregateRoot> GetModifiedEntities() =>
-        ChangeTracker.Entries<AggregateRoot>()
-            .Where(x => x.State != EntityState.Detached)
-            .Select(c => c.Entity)
-            .Where(c => c.DomainEvents.Any()).ToList();
-
-    private async Task PublishEvents(List<AggregateRoot> modifiedEntities)
-    {
-        foreach (var entity in modifiedEntities)
-        {
-            var events = entity.DomainEvents;
-            foreach (var domainEvent in events)
-            {
-                await _publisher.Publish(domainEvent,PublishStrategy.ParallelNoWait);
-            }
-        }
-    }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

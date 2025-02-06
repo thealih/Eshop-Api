@@ -1,18 +1,19 @@
-﻿using System;
+﻿using Common.Application;
+using Common.Domain.ValueObjects;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Application;
-using Common.Domain.ValueObjects;
-using Microsoft.AspNetCore.Http;
-using Shop.Domain.ProductAgg;
 
 namespace Shop.Application.Products.Create
 {
-    public class CreateProductCommand:IBaseCommand
+    public class CreateProductCommand : IBaseCommand
     {
-        public CreateProductCommand(string title, IFormFile imageFile, string description, long categoryId, long subCategoryId, long secondarySubCategoryId, string slug, SeoData seoData, Dictionary<string, string> specifications)
+        public CreateProductCommand(string title, IFormFile imageFile, string description, long categoryId,
+            long subCategoryId, long secondarySubCategoryId, string slug, SeoData seoData,
+            Dictionary<string, string> specifications)
         {
             Title = title;
             ImageFile = imageFile;
@@ -33,7 +34,6 @@ namespace Shop.Application.Products.Create
         public long SecondarySubCategoryId { get; private set; }
         public string Slug { get; private set; }
         public SeoData SeoData { get; private set; }
-        public Dictionary<string , string> Specifications { get; private set; }
-
+        public Dictionary<string, string> Specifications { get; private set; }
     }
 }

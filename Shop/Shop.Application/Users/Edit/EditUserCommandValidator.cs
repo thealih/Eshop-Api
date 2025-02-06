@@ -11,12 +11,12 @@ public class EditUserCommandValidator : AbstractValidator<EditUserCommand>
             .ValidPhoneNumber();
 
         RuleFor(r => r.Email)
-            .EmailAddress().WithMessage("ایمیل نامعتبر است.");
+            .EmailAddress().WithMessage("ایمیل نامعتبر است");
 
-        RuleFor(r => r.Password)
-            .MinimumLength(4).WithMessage("کلمه عبور باید بیششتر از 4 کارکتر باشد.");
+        RuleFor(f => f.Password)
+            .MinimumLength(4).WithMessage("کلمه عبور باید بشتر از 4 کارکتر باشد");
 
-        RuleFor(r => r.Avatar)
+        RuleFor(f => f.Avatar)
             .JustImageFile();
     }
 }

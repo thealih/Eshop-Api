@@ -1,15 +1,34 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Sellers\ChangeStatus\**" />
+    <Compile Remove="Sellers\DeleteInventory\**" />
+    <EmbeddedResource Remove="Sellers\ChangeStatus\**" />
+    <EmbeddedResource Remove="Sellers\DeleteInventory\**" />
+    <None Remove="Sellers\ChangeStatus\**" />
+    <None Remove="Sellers\DeleteInventory\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Roles\Create\" />
     <Folder Include="Roles\Edit\" />
-    <Folder Include="Seller\Edit\" />
+    <Folder Include="Sellers\Create\" />
+    <Folder Include="Sellers\Edit\" />
+    <Folder Include="Sellers\AddInventory\" />
+    <Folder Include="Sellers\EditInventory\" />
+    <Folder Include="SiteEntities\Sliders\Edit\" />
+    <Folder Include="Users\Create\" />
+    <Folder Include="Users\Edit\" />
+    <Folder Include="Users\AddAddress\" />
     <Folder Include="Users\DeleteAddress\" />
+    <Folder Include="Users\EditAddress\" />
+    <Folder Include="Users\Register\" />
   </ItemGroup>
 
   <ItemGroup>

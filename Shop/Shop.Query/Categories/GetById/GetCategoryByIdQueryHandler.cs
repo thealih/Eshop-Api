@@ -5,7 +5,7 @@ using Shop.Query.Categories.DTOs;
 
 namespace Shop.Query.Categories.GetById;
 
-internal class GetCategoryByIdQueryHandler : IQueryHandler<GetCategoryByIdQuery , CategoryDto>
+internal class GetCategoryByIdQueryHandler : IQueryHandler<GetCategoryByIdQuery, CategoryDto>
 {
     private readonly ShopContext _context;
 

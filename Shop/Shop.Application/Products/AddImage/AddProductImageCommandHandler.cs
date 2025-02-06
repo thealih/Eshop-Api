@@ -4,30 +4,32 @@ using Shop.Application._Utilities;
 using Shop.Domain.ProductAgg;
 using Shop.Domain.ProductAgg.Repository;
 
-namespace Shop.Application.Products.AddImage;
-
-internal class AddProductImageCommandHandler:IBaseCommandHandler<AddProductImageCommand>
+namespace Shop.Application.Products.AddImage
 {
-    private readonly IProductRepository _repository;
-    private readonly IFileService _fileService;
-
-    public AddProductImageCommandHandler(IProductRepository repository, IFileService fileService)
+    internal class AddProductImageCommandHandler : IBaseCommandHandler<AddProductImageCommand>
     {
-        _repository = repository;
-        _fileService = fileService;
-    }
+        private readonly IProductRepository _repository;
+        private readonly IFileService _fileService;
 
-    public async Task<OperationResult> Handle(AddProductImageCommand request, CancellationToken cancellationToken)
-    {
-        var product =await _repository.GetTracking(request.ProductId);
-        if (product == null)
-            return OperationResult.NotFound();
+        public AddProductImageCommandHandler(IProductRepository repository, IFileService fileService)
+        {
+            _repository = repository;
+            _fileService = fileService;
+        }
 
-        var imageName = await _fileService.SaveFileAndGenerateName(request.ImageFile , Directories.ProductGalleryImages);
+        public async Task<OperationResult> Handle(AddProductImageCommand request, CancellationToken cancellationToken)
+        {
+            var product = await _repository.GetTracking(request.ProductId);
+            if (product == null)
+                return OperationResult.NotFound();
 
-        var productImage = new ProductImage(imageName, request.Sequence);
-        product.AddImage(productImage);
-        await _repository.Save();
-        return OperationResult.Success();
+            var imageName = await _fileService
+                .SaveFileAndGenerateName(request.ImageFile, Directories.ProductGalleryImage);
+
+            var productImage = new ProductImage(imageName, request.Sequence);
+            product.AddImage(productImage);
+            await _repository.Save();
+            return OperationResult.Success();
+        }
     }
 }

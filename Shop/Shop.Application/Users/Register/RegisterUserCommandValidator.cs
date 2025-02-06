@@ -3,13 +3,15 @@ using FluentValidation;
 
 namespace Shop.Application.Users.Register;
 
-public class RegisterUserCommandValidator:AbstractValidator<RegisterUserCommand>
+public class RegisterUserCommandValidator : AbstractValidator<RegisterUserCommand>
 {
     public RegisterUserCommandValidator()
     {
-        RuleFor(r => r.Password)
+
+        RuleFor(f => f.Password)
             .NotEmpty().WithMessage(ValidationMessages.required("کلمه عبور"))
             .NotNull().WithMessage(ValidationMessages.required("کلمه عبور"))
-            .MinimumLength(4).WithMessage("کلمه عبور باید بیششتر از 4 کارکتر باشد.");
+            .MinimumLength(4).WithMessage("کلمه عبور باید بشتر از 4 کارکتر باشد");
+
     }
 }

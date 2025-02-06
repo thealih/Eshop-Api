@@ -26,4 +26,5 @@ public class AddUserAddressCommand:IBaseCommand
     public string Name { get; private set; }
     public string Family { get; private set; }
     public string NationalCode { get; private set; }
+
 }

@@ -6,20 +6,19 @@ using Shop.Query.Orders.DTOs;
 
 namespace Shop.Query.Orders.GetById;
 
-internal class GetOrderByIdQueryHandler : IQueryHandler<GetOrderByIdQuery , OrderDto?>
+internal class GetOrderByIdQueryHandler : IQueryHandler<GetOrderByIdQuery, OrderDto?>
 {
-    private ShopContext _shopContext;
-    private DapperContext _dapperContext;
+    private readonly ShopContext _shopContext;
+    private readonly DapperContext _dapperContext;
 
     public GetOrderByIdQueryHandler(ShopContext shopContext, DapperContext dapperContext)
     {
         _shopContext = shopContext;
         _dapperContext = dapperContext;
     }
-
     public async Task<OrderDto?> Handle(GetOrderByIdQuery request, CancellationToken cancellationToken)
     {
-        var order =await _shopContext.Orders
+        var order = await _shopContext.Orders
             .FirstOrDefaultAsync(f => f.Id == request.OrderId, cancellationToken);
         if (order == null)
             return null;

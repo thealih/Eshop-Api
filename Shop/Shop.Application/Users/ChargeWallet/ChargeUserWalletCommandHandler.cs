@@ -12,10 +12,11 @@ internal class ChargeUserWalletCommandHandler:IBaseCommandHandler<ChargeUserWall
     {
         _repository = repository;
     }
+
     public async Task<OperationResult> Handle(ChargeUserWalletCommand request, CancellationToken cancellationToken)
     {
         var user = await _repository.GetTracking(request.UserId);
-        if (user == null)
+        if(user==null)
             return OperationResult.NotFound();
 
         var wallet = new Wallet(request.Price, request.Description, request.IsFinally, request.Type);

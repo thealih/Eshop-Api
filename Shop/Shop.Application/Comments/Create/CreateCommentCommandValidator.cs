@@ -1,14 +1,15 @@
 ﻿using Common.Application.Validation;
 using FluentValidation;
 
-namespace Shop.Application.Comments.Create;
-
-public class CreateCommentCommandValidator:AbstractValidator<CreateCommentCommand>
+namespace Shop.Application.Comments.Create
 {
-    public CreateCommentCommandValidator()
+    public class CreateCommentCommandValidator : AbstractValidator<CreateCommentCommand>
     {
-        RuleFor(r => r.Text)
-            .NotNull()
-            .MinimumLength(5).WithMessage(ValidationMessages.minLength("متن نظر", 5));
+        public CreateCommentCommandValidator()
+        {
+            RuleFor(r => r.Text)
+                .NotNull()
+                .MinimumLength(5).WithMessage(ValidationMessages.minLength("متن نظر", 5));
+        }
     }
 }

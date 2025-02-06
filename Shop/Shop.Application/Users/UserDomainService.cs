@@ -9,7 +9,7 @@ public class UserDomainService:IUserDomainService
         throw new NotImplementedException();
     }
 
-    public bool PhoneNumberExist(string phoneNumber)
+    public bool PhoneNumberIsExist(string phoneNumber)
     {
         throw new NotImplementedException();
     }

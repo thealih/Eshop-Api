@@ -1,16 +1,15 @@
-﻿using System;
+﻿using Common.Domain.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Domain.Repository;
 
 namespace Shop.Domain.SellerAgg.Repository
 {
     public interface ISellerRepository : IBaseRepository<Seller>
     {
-        Task<InventoryResult> GetInventoryById(long id);
+        Task<InventoryResult?> GetInventoryById(long id);
     }
 
     public class InventoryResult

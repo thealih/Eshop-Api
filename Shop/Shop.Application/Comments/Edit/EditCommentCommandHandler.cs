@@ -1,27 +1,26 @@
 ﻿using Common.Application;
 using Shop.Domain.CommentAgg;
 
-namespace Shop.Application.Comments.Edit;
-
-public class EditCommentCommandHandler: IBaseCommandHandler<EditCommentCommand>
+namespace Shop.Application.Comments.Edit
 {
-    private readonly ICommentRepository _repository;
-
-    public EditCommentCommandHandler(ICommentRepository repository)
+    public class EditCommentCommandHandler : IBaseCommandHandler<EditCommentCommand>
     {
-        _repository = repository;
-    }
+        private readonly ICommentRepository _repository;
 
-    public async Task<OperationResult> Handle(EditCommentCommand request, CancellationToken cancellationToken)
-    {
-        var comment = await _repository.GetTracking(request.CommentId);
-        if (comment == null || comment.UserId != request.UserId)
+        public EditCommentCommandHandler(ICommentRepository repository)
         {
-            return OperationResult.NotFound();
+            _repository = repository;
         }
 
-        comment.Edit(request.Text);
-        await _repository.Save();
-        return OperationResult.Success();
+        public async Task<OperationResult> Handle(EditCommentCommand request, CancellationToken cancellationToken)
+        {
+            var comment = await _repository.GetTracking(request.CommentId);
+            if (comment == null || comment.UserId != request.UserId)
+                return OperationResult.NotFound();
+
+            comment.Edit(request.Text);
+            await _repository.Save();
+            return OperationResult.Success();
+        }
     }
 }

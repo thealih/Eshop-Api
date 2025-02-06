@@ -2,6 +2,6 @@
 
 public interface ISellerDomainService
 {
-    bool CheckSellerInfo(Seller seller);
+    bool IsValidSellerInformation(Seller seller);
     bool NationalCodeExistInDataBase(string nationalCode);
 }

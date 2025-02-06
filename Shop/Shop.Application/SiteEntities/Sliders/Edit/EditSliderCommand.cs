@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Services.Common.Application;
+﻿using Common.Application;
+using Microsoft.AspNetCore.Http;
 
 namespace Shop.Application.SiteEntities.Sliders.Edit;
 
 public class EditSliderCommand:IBaseCommand
-{ 
+{
     public EditSliderCommand(long id, string link, IFormFile? imageFile, string title)
     {
         Id = id;

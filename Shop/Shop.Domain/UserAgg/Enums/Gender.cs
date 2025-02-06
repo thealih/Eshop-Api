@@ -1,8 +1,15 @@
-﻿namespace Shop.Domain.UserAgg.Enums;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-public enum Gender
+namespace Shop.Domain.UserAgg.Enums
 {
-    Male = 1,
-    Female = 2,
-    Unspecified = 3
+    public enum Gender
+    {
+        None,
+        Male,
+        Famele
+    }
 }

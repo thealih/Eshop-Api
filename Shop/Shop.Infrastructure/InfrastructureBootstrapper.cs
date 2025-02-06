@@ -7,10 +7,7 @@ using Shop.Domain.ProductAgg.Repository;
 using Shop.Domain.RoleAgg.Repository;
 using Shop.Domain.SellerAgg.Repository;
 using Shop.Domain.SiteEntities.Repositories;
-using Shop.Domain.SiteEntities.Repository;
-using Shop.Domain.SiteEntities.Repository;
 using Shop.Domain.UserAgg.Repository;
-using Shop.Infrastructure._Utilities.MediatR;
 using Shop.Infrastructure.Persistent.Dapper;
 using Shop.Infrastructure.Persistent.Ef;
 using Shop.Infrastructure.Persistent.Ef.CategoryAgg;
@@ -37,9 +34,7 @@ namespace Shop.Infrastructure
             services.AddTransient<ISliderRepository, SliderRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ICommentRepository, CommentRepository>();
-            services.AddTransient<IShippingMethodRepository, ShippingMethodRepository>();
 
-            services.AddSingleton<ICustomPublisher, CustomPublisher>();
 
             services.AddTransient(_ => new DapperContext(connectionString));
             services.AddDbContext<ShopContext>(option =>

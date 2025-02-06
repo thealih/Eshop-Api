@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Common.Domain;
+using Common.Domain.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Domain;
-using Common.Domain.Exceptions;
 
 namespace Shop.Domain.SiteEntities
 {
@@ -32,14 +32,14 @@ namespace Shop.Domain.SiteEntities
 
         public void Guard(string link, string imageName)
         {
-            NullOrEmptyDomainDataException.CheckString(link , nameof(link));
-            NullOrEmptyDomainDataException.CheckString(imageName , nameof(imageName));
+            NullOrEmptyDomainDataException.CheckString(link, nameof(link));
+            NullOrEmptyDomainDataException.CheckString(imageName, nameof(imageName));
         }
     }
 
     public enum BannerPosition
     {
-    زیر_اسلایدر,
-    سمت_راست_اسلایدر
+        زیر_اسلایدر,
+        سمت_راست_اسلایر
     }
 }
