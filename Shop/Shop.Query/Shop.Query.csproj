@@ -20,9 +20,9 @@
     <Folder Include="Products\GetBySlug\" />
     <Folder Include="Products\GetByFilter\" />
     <Folder Include="Products\DTOs\" />
-    <Folder Include="Sellers\" />
-    <Folder Include="SiteEntities\" />
-    <Folder Include="Roles\" />
+    <Folder Include="Roles\DTOs\" />
+    <Folder Include="Sellers\GetByFilter\" />
+    <Folder Include="Sellers\DTOs\" />
     <Folder Include="Users\" />
   </ItemGroup>
 

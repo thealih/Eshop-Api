@@ -1,4 +1,5 @@
 ﻿using Common.Query;
+using Microsoft.EntityFrameworkCore;
 using Shop.Infrastructure.Persistent.Ef;
 using Shop.Query.Products.DTOs;
 
@@ -30,7 +31,10 @@ public class GetProductByFilterQueryHandler : IQueryHandler<GetProductByFilterQu
         var skip = (@params.PageId - 1) * @params.Take;
         var model = new ProductFilterResult()
         {
-            Data = result.Skip(skip).Take(@params.Take).Select(s => s.MapListData()).ToList(),
+            Data = await result.Skip(skip)
+                .Take(@params.Take)
+                .Select(s => s.MapListData())
+                .ToListAsync(cancellationToken),
             FilterParams = @params
         };
         model.GeneratePaging(result,@params.Take,@params.PageId);
