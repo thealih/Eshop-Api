@@ -23,7 +23,6 @@
     <Folder Include="Roles\DTOs\" />
     <Folder Include="Sellers\GetByFilter\" />
     <Folder Include="Sellers\DTOs\" />
-    <Folder Include="Users\" />
   </ItemGroup>
 
   <ItemGroup>
