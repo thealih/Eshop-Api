@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\Common.ChachHelper\Common.ChachHelper.csproj" />
     <ProjectReference Include="..\Shop.Application\Shop.Application.csproj" />
     <ProjectReference Include="..\Shop.Query\Shop.Query.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Categories\" />
+    <Folder Include="Comments\" />
+    <Folder Include="Orders\" />
+    <Folder Include="Siteentities\ShippingMethods\" />
   </ItemGroup>
 
 </Project>
