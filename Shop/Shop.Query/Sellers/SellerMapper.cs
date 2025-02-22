@@ -12,7 +12,6 @@ public static class SellerMapper
 
         return new SellerDto()
         {
-            
             Id = seller.Id,
             CreationDate = seller.CreationDate,
             Status = seller.Status,

@@ -5,7 +5,7 @@ using Shop.Query.Roles.DTOs;
 
 namespace Shop.Query.Roles.GetById;
 
-public class GetRoleByIdQueryHandler : IQueryHandler<GetRoleByIdQuery, RoleDto>
+public class GetRoleByIdQueryHandler : IQueryHandler<GetRoleByIdQuery, RoleDto?>
 {
     private readonly ShopContext _context;
 
@@ -14,12 +14,12 @@ public class GetRoleByIdQueryHandler : IQueryHandler<GetRoleByIdQuery, RoleDto>
         _context = context;
     }
 
-    public async Task<RoleDto> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
+    public async Task<RoleDto?> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
     {
-        var role = await _context.Roles
-            .FirstOrDefaultAsync(f => f.Id == request.RoleId, cancellationToken);
+        var role = await _context.Roles.FirstOrDefaultAsync(f => f.Id == request.RoleId, cancellationToken: cancellationToken);
         if (role == null)
             return null;
+
         return new RoleDto()
         {
             Id = role.Id,

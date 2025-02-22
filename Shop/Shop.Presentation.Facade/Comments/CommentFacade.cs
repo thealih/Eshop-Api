@@ -34,7 +34,6 @@ internal class CommentFacade: ICommentFacade
         return await _mediator.Send(command);
     }
 
-
     public async Task<CommentDto?> GetCommentById(long id)
     {
         return await _mediator.Send(new GetCommentByIdQuery(id));

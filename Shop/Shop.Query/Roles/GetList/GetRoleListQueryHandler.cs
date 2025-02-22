@@ -5,7 +5,7 @@ using Shop.Query.Roles.DTOs;
 
 namespace Shop.Query.Roles.GetList;
 
-public class GetRoleListQueryHandler : IQueryHandler<GetRoleListQuery , List<RoleDto>>
+public class GetRoleListQueryHandler : IQueryHandler<GetRoleListQuery, List<RoleDto>>
 {
     private readonly ShopContext _context;
 

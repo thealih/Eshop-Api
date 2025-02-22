@@ -2,21 +2,18 @@
 using MediatR;
 using Shop.Application.Sellers.AddInventory;
 using Shop.Application.Sellers.EditInventory;
-using Shop.Query.Sellers.DTOs;
 
 namespace Shop.Presentation.Facade.Sellers.Inventories;
 
 public interface ISellerInventoryFacade
 {
     Task<OperationResult> AddInventory(AddSellerInventoryCommand command);
-    Task<OperationResult> EditInventory(EditSellerInventoryCommand command);
-
-
+    Task<OperationResult> AddInventory(EditSellerInventoryCommand command);
 }
 
 internal class SellerInventoryFacade : ISellerInventoryFacade
 {
-    private readonly IMediator _mediator;
+    private IMediator _mediator;
 
     public SellerInventoryFacade(IMediator mediator)
     {
@@ -28,10 +25,8 @@ internal class SellerInventoryFacade : ISellerInventoryFacade
         return await _mediator.Send(command);
     }
 
-    public async Task<OperationResult> EditInventory(EditSellerInventoryCommand command)
+    public async Task<OperationResult> AddInventory(EditSellerInventoryCommand command)
     {
         return await _mediator.Send(command);
     }
-
- 
 }

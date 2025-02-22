@@ -5,7 +5,7 @@ using Shop.Domain.UserAgg.Enums;
 
 namespace Shop.Query.Users.DTOs;
 
-public class UserDto : BaseDto
+public class UserDto:BaseDto
 {
     public string Name { get; set; }
     public string Family { get; set; }
@@ -16,12 +16,12 @@ public class UserDto : BaseDto
     public Gender Gender { get; set; }
     public List<UserRoleDto> Roles { get; set; }
 }
-
 public class UserRoleDto
 {
     public long RoleId { get; set; }
-    public string RoleTilte { get; set; }
+    public string RoleTitle { get; set; }
 }
+
 
 public class UserFilterData : BaseDto
 {
@@ -33,14 +33,13 @@ public class UserFilterData : BaseDto
     public Gender Gender { get; set; }
 }
 
-public class UserFilterParams : BaseFilterParam
+public class UserFilterParams:BaseFilterParam
 {
     public string? PhoneNumber { get; set; }
     public string? Email { get; set; }
     public long? Id { get; set; }
 }
-
-public class UserFilterResult : BaseFilter<UserFilterData, UserFilterParams>
+public class UserFilterResult : BaseFilter<UserFilterData,UserFilterParams>
 {
 
 }

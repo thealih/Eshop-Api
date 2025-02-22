@@ -9,4 +9,3 @@ public class BannerDto : BaseDto
     public string ImageName { get;  set; }
     public BannerPosition Position { get;  set; }
 }
- 

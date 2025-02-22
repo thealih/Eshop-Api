@@ -5,7 +5,7 @@ using Shop.Query.Users.DTOs;
 
 namespace Shop.Query.Users.GetById;
 
-public class GetUserByIdQueryHandler:IQueryHandler<GetUserByIdQuery , UserDto?>
+public class GetUserByIdQueryHandler : IQueryHandler<GetUserByIdQuery, UserDto?>
 {
     private readonly ShopContext _context;
 
@@ -21,6 +21,7 @@ public class GetUserByIdQueryHandler:IQueryHandler<GetUserByIdQuery , UserDto?>
         if (user == null)
             return null;
 
-        return await user.Map().SetUserRoleTitle(_context);
+
+        return await user.Map().SetUserRoleTitles(_context);
     }
 }

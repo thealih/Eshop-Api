@@ -5,16 +5,16 @@ using Shop.Query.Products.DTOs;
 
 namespace Shop.Query.Products.GetByFilter;
 
-public class GetProductByFilterQueryHandler : IQueryHandler<GetProductByFilterQuery, ProductFilterResult>
+internal class GetProductsByFilterQueryHandler : IQueryHandler<GetProductsByFilterQuery, ProductFilterResult>
 {
     private readonly ShopContext _context;
 
-    public GetProductByFilterQueryHandler(ShopContext context)
+    public GetProductsByFilterQueryHandler(ShopContext context)
     {
         _context = context;
     }
 
-    public async Task<ProductFilterResult> Handle(GetProductByFilterQuery request, CancellationToken cancellationToken)
+    public async Task<ProductFilterResult> Handle(GetProductsByFilterQuery request, CancellationToken cancellationToken)
     {
         var @params = request.FilterParams;
         var result = _context.Products.OrderByDescending(d => d.Id).AsQueryable();
@@ -31,13 +31,11 @@ public class GetProductByFilterQueryHandler : IQueryHandler<GetProductByFilterQu
         var skip = (@params.PageId - 1) * @params.Take;
         var model = new ProductFilterResult()
         {
-            Data = await result.Skip(skip)
-                .Take(@params.Take)
-                .Select(s => s.MapListData())
+            Data = await result.Skip(skip).Take(@params.Take).Select(s => s.MapListData())
                 .ToListAsync(cancellationToken),
             FilterParams = @params
         };
-        model.GeneratePaging(result,@params.Take,@params.PageId);
+        model.GeneratePaging(result, @params.Take, @params.PageId);
         return model;
     }
 }
